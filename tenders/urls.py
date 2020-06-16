@@ -17,7 +17,7 @@ from django.urls import include, path
 from rest_framework import routers
 from rest_framework.authtoken.views import obtain_auth_token
 from tendersapi.models import *
-from tendersapi.views import register_user, login_user
+from tendersapi.views import *
 
 router = routers.DefaultRouter(trailing_slash=False)
 
