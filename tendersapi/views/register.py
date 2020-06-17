@@ -53,11 +53,11 @@ def register_user(request):
         email=req_body['email'],
         password=req_body['password'],
         first_name=req_body['first_name'],
-        last_name=req_body['last_name'],
+        last_name=req_body['last_name']
     )
 
     bartender = Bartender.objects.create(
-        image_url=req_body['image_url'],
+        image_url= None,
         user=new_user
     )
 
