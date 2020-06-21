@@ -5,7 +5,7 @@ from .bartender import Bartender
 
 class Cocktail(models.Model):
     
-    external_id = models.CharField(max_length=255)
+    external_id = models.CharField(max_length=255, null=True)
     name = models.CharField(max_length=255)
     bartender = models.ForeignKey(Bartender, on_delete=models.DO_NOTHING)
     date_added = models.DateTimeField(auto_now=True)
