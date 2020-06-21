@@ -21,6 +21,9 @@ from tendersapi.views import *
 
 router = routers.DefaultRouter(trailing_slash=False)
 
+router.register(r'bartenders', Bartenders, 'bartender')
+router.register(r'cocktails', Cocktail, 'cocktail')
+
 
 urlpatterns = [
     path('', include(router.urls)),
