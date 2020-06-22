@@ -6,10 +6,7 @@ from rest_framework import status
 from tendersapi.models import Ingredient, Cocktail, Bartender
 
 class IngredientSerializer(serializers.HyperlinkedModelSerializer):
-    """JSON serializer for payment types
-    Arguments:
-        serializers
-    """
+
     class Meta:
         model = Ingredient
         url = serializers.HyperlinkedIdentityField(
@@ -42,11 +39,7 @@ class Ingredients(ViewSet):
             return HttpResponseServerError(ex)
 
     def create(self, request):
-        """Handle POST operations
 
-        Returns:
-            Response -- JSON serialized Ingredient instance
-        """
         new_ingredient = Ingredient()
         new_ingredient.ingredient = request.data["ingredient"]
         new_ingredient.measurement = request.data["measurement"]
@@ -58,12 +51,16 @@ class Ingredients(ViewSet):
 
         return Response(serializer.data)
 
-    def destroy(self, request, pk=None):
-        """Handle DELETE requests for a single payment type
+    def update(self, request, pk=None):
 
-        Returns:
-            Response -- 200, 404, or 500 status code 
-        """
+        cocktail = Ingredient.objects.get(pk=pk)
+        cocktail.measurement = request.data["measurement"]
+        cocktail.ingredient = request.data["ingredient"] 
+        cocktail.save()
+
+        return Response({}, status=status.HTTP_204_NO_CONTENT)
+
+    def destroy(self, request, pk=None):
 
         try:
             ingredient = Ingredient.objects.get(pk=pk)
