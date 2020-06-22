@@ -7,10 +7,7 @@ from tendersapi.models import Bartender as BartenderModel
 from django.contrib.auth.models import User
 
 class BartenderSerializer(serializers.HyperlinkedModelSerializer):
-    """JSON serializer for bartenders
-    Arguments:
-        serializers
-    """
+
     class Meta:
         model = BartenderModel
         url = serializers.HyperlinkedIdentityField(
@@ -24,11 +21,6 @@ class BartenderSerializer(serializers.HyperlinkedModelSerializer):
 class Bartenders(ViewSet):
     
     def list(self, request):
-        """Handle GET requests to bartenders resource
-        
-        Returns:
-            Response -- JSON serialized list of bartenders
-        """
 
         bartenders = BartenderModel.objects.all()
 
