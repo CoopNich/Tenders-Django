@@ -21,9 +21,13 @@ class Ingredients(ViewSet):
     def list(self, request):
 
         ingredients = Ingredient.objects.all()
+        cocktail_id = self.request.query_params.get('cocktail_id', None)
 
-        serializer = IngredientSerializer(ingredients, many=True, context={'request': request})
-        return Response(serializer.data)
+        if cocktail_id is not None:
+
+            ingredients = ingredients.filter(cocktail_id=cocktail_id)
+            serializer = IngredientSerializer(ingredients, many=True, context={'request': request})
+            return Response(serializer.data)
 
     def retrieve(self, request, pk=None):
 
