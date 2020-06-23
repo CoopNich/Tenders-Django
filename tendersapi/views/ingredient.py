@@ -20,11 +20,7 @@ class Ingredients(ViewSet):
     
     def list(self, request):
 
-        bartender = Bartender.objects.get(user=request.auth.user)
-
-        cocktail = Cocktail.objects.get(bartender=bartender)
-
-        ingredients = Ingredient.objects.filter(cocktail=cocktail)
+        ingredients = Ingredient.objects.all()
 
         serializer = IngredientSerializer(ingredients, many=True, context={'request': request})
         return Response(serializer.data)
