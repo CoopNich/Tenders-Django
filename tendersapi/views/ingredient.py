@@ -53,10 +53,10 @@ class Ingredients(ViewSet):
 
     def update(self, request, pk=None):
 
-        cocktail = Ingredient.objects.get(pk=pk)
-        cocktail.measurement = request.data["measurement"]
-        cocktail.ingredient = request.data["ingredient"] 
-        cocktail.save()
+        ingredient = Ingredient.objects.get(pk=pk)
+        ingredient.measurement = request.data["measurement"]
+        ingredient.ingredient = request.data["ingredient"] 
+        ingredient.save()
 
         return Response({}, status=status.HTTP_204_NO_CONTENT)
 
