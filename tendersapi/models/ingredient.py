@@ -4,7 +4,7 @@ from .cocktail import Cocktail
 
 class Ingredient(models.Model):
 
-    cocktail = models.ForeignKey(Cocktail, on_delete=models.DO_NOTHING)
+    cocktail = models.ForeignKey(Cocktail, on_delete=models.CASCADE)
     ingredient = models.CharField(max_length=50)
     measurement = models.CharField(max_length=50, null=True)
     
