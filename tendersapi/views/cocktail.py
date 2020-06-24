@@ -58,7 +58,12 @@ class Cocktail(ViewSet):
         new_cocktail.instructions = request.data["instructions"]
         new_cocktail.is_edited = request.data["is_edited"]
         new_cocktail.is_new = request.data["is_new"]
-        new_cocktail.image_url = request.data["image_url"]
+        if request.data["image_url"] is None:
+            new_cocktail.image_url = "https://svgsilh.com/svg/2744777.svg"
+        else:
+            new_cocktail.image_url = request.data["image_url"]
+
+
 
         new_cocktail.save()
 
