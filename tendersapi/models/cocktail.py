@@ -14,6 +14,9 @@ class Cocktail(models.Model):
     is_edited = models.BooleanField()
     is_new = models.BooleanField()
     image_url = models.CharField(null=True, max_length=1000)
+
+    class Meta:
+        ordering = (F('date_added').asc(nulls_last=True),)
    
 
     def __str__(self):

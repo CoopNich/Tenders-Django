@@ -77,7 +77,8 @@ class Cocktail(ViewSet):
 
         cocktail = CocktailModel.objects.get(pk=pk)
         cocktail.instructions = request.data["instructions"]
-        cocktail.name = request.data["name"] 
+        cocktail.name = request.data["name"]
+        cocktail.date_added = datetime.now() 
         cocktail.save()
 
         return Response({}, status=status.HTTP_204_NO_CONTENT)
