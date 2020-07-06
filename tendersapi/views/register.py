@@ -57,7 +57,8 @@ def register_user(request):
     )
 
     bartender = Bartender.objects.create(
-        image_url= None,
+
+        image_url=req_body['image_url'],  
         user=new_user
     )
 
