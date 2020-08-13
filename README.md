@@ -26,4 +26,4 @@ This is the Django REST API for Tenders. Once you have the server running, visit
    `python manage.py runserver`
 
 ## ERD
-![ERD](./ERD.png)
+![ERD](./ERD.PNG)
